@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yang.udfile.dao.UserFileDao">
+
+
+    <select id="queryUserFile" parameterType="string" resultType="com.yang.udfile.entity.UserFile">
+        SELECT
+            tf.*
+        FROM
+            t_files tf
+                LEFT JOIN t_user tu ON tf.userId = tu.id
+        WHERE
+            tf.userId = #{userId}
+    </select>
+
+</mapper>
+

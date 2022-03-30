@@ -20,17 +20,17 @@
         <td>上传时间</td>
         <td>操作</td>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>aa.txt</td>
-        <td>uudi.txt</td>
-        <td>.txt</td>
-        <td>/files</td>
-        <td>1024</td>
-        <td>text/plain</td>
-        <td>否</td>
-        <td>11</td>
-        <td>2022-12-12</td>
+    <tr th:each="file,fileStat: ${userFiles}">
+        <td><span th:text="${fild.id}"></span></td>
+        <td><span th:text="${fild.oldFileName}"></span></td>
+        <td><span th:text="${fild.newFileName}"></span></td>
+        <td><span th:text="${fild.ext}"></span></td>
+        <td><span th:text="${fild.path}"></span></td>
+        <td><span th:text="${fild.size}"></span></td>
+        <td><span th:text="${fild.type}"></span></td>
+        <td><span th:text="${fild.isImg}"></span></td>
+        <td><span th:text="${fild.downcounts}"></span></td>
+        <td><span th:text="${fild.uploadTime}"></span></td>
         <td>
             <a href="">下载</a>
             <a href="">在线打开</a>
