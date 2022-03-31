@@ -16,10 +16,31 @@ import java.util.List;
 @Service("UserFileServiceImpl")
 public class UserFileServiceImpl implements UserFileService {
 
-    @Autowired
+    @Autowired(required = false)
     private UserFileDao userFileDao;
     @Override
     public List<UserFile> queryUserFile(String userId) {
         return userFileDao.queryUserFile(userId);
+    }
+
+    @Override
+    public void saveFileInfo(UserFile userFile) {
+        userFile.setDowncount(0);
+        userFileDao.saveFileInfo(userFile);
+    }
+
+    @Override
+    public UserFile findById(String id) {
+        return userFileDao.findById(id);
+    }
+
+    @Override
+    public void update(UserFile userFile) {
+        userFileDao.update(userFile);
+    }
+
+    @Override
+    public void delect(String id) {
+        userFileDao.delect(id);
     }
 }

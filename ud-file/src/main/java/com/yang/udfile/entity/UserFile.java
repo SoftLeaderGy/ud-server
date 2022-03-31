@@ -23,7 +23,7 @@ public class UserFile {
     private String size;
     private String type;
     private String isImg;
-    private Integer downcounts;
-    private Date uploadTime;
+    private Integer downcount;
+    private String uploadTime;
     private String userId;
 }

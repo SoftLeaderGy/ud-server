@@ -11,4 +11,11 @@ import java.util.List;
  */
 public interface UserFileDao {
     List<UserFile> queryUserFile(String userId);
+    void saveFileInfo(UserFile userFile);
+
+    UserFile findById(String id);
+
+    void update(UserFile userFile);
+
+     void delect(String id);
 }

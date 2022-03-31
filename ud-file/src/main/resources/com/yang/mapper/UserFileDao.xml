@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yang.udfile.dao.UserFileDao">
+    <insert id="saveFileInfo" parameterType="com.yang.udfile.entity.UserFile">
+        insert into t_files(id,oldFileName, newFileName, ext, size, type, isImg, downcount, uploadTime,userId,path)
+        values (#{id},#{oldFileName}, #{newFileName}, #{ext}, #{size}, #{type}, #{isImg}, #{downcount}, #{uploadTime},#{userId},#{path})
+    </insert>
+    <update id="update" parameterType="com.yang.udfile.entity.UserFile">
+        update t_files set downcount = #{downcount} where id = #{id}
+    </update>
+    <delete id="delect" parameterType="string">
+        delete from t_files where id = #{id}
+    </delete>
 
 
     <select id="queryUserFile" parameterType="string" resultType="com.yang.udfile.entity.UserFile">
@@ -11,6 +21,9 @@
                 LEFT JOIN t_user tu ON tf.userId = tu.id
         WHERE
             tf.userId = #{userId}
+    </select>
+    <select id="findById" resultType="com.yang.udfile.entity.UserFile" parameterType="string">
+        select * from t_files where id = #{id}
     </select>
 
 </mapper>
