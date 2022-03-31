@@ -29,7 +29,7 @@
         <td><span th:text="${file.size}"></span></td>
         <td><span th:text="${file.type}"></span></td>
         <td>
-            <img th:if="${file.isImg}=='是'" th:src="'http://yang.gunveda.top/ud-server'+${file.path}+ '/'+${file.newFileName} " style="width: 100px; height: 80px">
+            <img th:if="${file.isImg}=='是'" th:src="${#servletContext.contextPath}+${file.path}+ '/'+${file.newFileName} " style="width: 100px; height: 80px">
             <span th:if="${file.isImg}!='是'" th:text="${file.isImg}"></span>
         </td>
         <td><span th:text="${file.downcount}"></span></td>
