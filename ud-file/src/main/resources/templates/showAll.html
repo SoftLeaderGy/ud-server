@@ -20,21 +20,24 @@
         <td>上传时间</td>
         <td>操作</td>
     </tr>
-    <tr th:each="file,fileStat: ${userFiles}">
-        <td><span th:text="${fild.id}"></span></td>
-        <td><span th:text="${fild.oldFileName}"></span></td>
-        <td><span th:text="${fild.newFileName}"></span></td>
-        <td><span th:text="${fild.ext}"></span></td>
-        <td><span th:text="${fild.path}"></span></td>
-        <td><span th:text="${fild.size}"></span></td>
-        <td><span th:text="${fild.type}"></span></td>
-        <td><span th:text="${fild.isImg}"></span></td>
-        <td><span th:text="${fild.downcounts}"></span></td>
-        <td><span th:text="${fild.uploadTime}"></span></td>
+    <tr th:each="file:${userFiles}">
+        <td><span th:text="${file.id}"></span></td>
+        <td><span th:text="${file.oldFileName}"></span></td>
+        <td><span th:text="${file.newFileName}"></span></td>
+        <td><span th:text="${file.ext}"></span></td>
+        <td><span th:text="${file.path}"></span></td>
+        <td><span th:text="${file.size}"></span></td>
+        <td><span th:text="${file.type}"></span></td>
         <td>
-            <a href="">下载</a>
-            <a href="">在线打开</a>
-            <a href="">删除</a>
+            <img th:if="${file.isImg}=='是'" th:src="'http://yang.gunveda.top/ud-server'+${file.path}+ '/'+${file.newFileName} " style="width: 100px; height: 80px">
+            <span th:if="${file.isImg}!='是'" th:text="${file.isImg}"></span>
+        </td>
+        <td><span th:text="${file.downcount}"></span></td>
+        <td><span th:text="${file.uploadTime}"></span></td>
+        <td>
+            <a th:href="@{/file/download(id=${file.id})}">下载</a>
+            <a th:href="@{/file/download(id=${file.id},openStyle = 'inline')}">在线打开</a>
+            <a th:href="@{/file/delect(id=${file.id})}">删除</a>
         </td>
     </tr>
 </table>
@@ -42,8 +45,8 @@
 <h3>
     上传文件
 </h3>
-<form action="">
-    <input type="file" name="aaa"> <input type="submit" value="上传文件">
+<form action="/files/file/uploadFile" method="post" enctype="multipart/form-data">
+    <input type="file" name="file"> <input type="submit" value="上传文件">
 </form>
 </body>
 </html>
